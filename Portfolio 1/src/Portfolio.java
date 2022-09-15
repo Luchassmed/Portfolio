@@ -48,8 +48,8 @@ class Container extends Vessel {
     double containerAmount;
    
 
-    public boolean checkCargo(){
-        return containerAmount >= cargo;
+    public boolean checkCargo(){ //Hvis antallet af containers er større end max, returner true
+        return containerAmount > cargo;
     }
 
     public Container(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
@@ -81,7 +81,7 @@ class Tankers extends Vessel {
     double compartmentsAmount;
 
     public boolean checkCargo(){
-        return compartmentsAmount >= cargo;
+        return compartmentsAmount > cargo;
     }
 
     public Tankers(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
@@ -112,6 +112,10 @@ class Tankers extends Vessel {
 class RoRo extends Vessel {
     double carLength;
     double truckLength;
+
+    public boolean checkCargo(){
+        return carLength+truckLength > cargo;
+    }
 
     public RoRo(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
