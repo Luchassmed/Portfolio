@@ -8,7 +8,7 @@ public class Portfolio {
         tankersVessel.utilitylevelofCapacity();
         containerVessel.loadingCargo(23);
         containerVessel.utilitylevelofCapacity();
-        roRoVessel.loadingCargo(8);
+        roRoVessel.loadingCargo(7, 1);
         roRoVessel.utilitylevelofCapacity();
 
     }
@@ -33,8 +33,9 @@ abstract class Vessel {
 
     }
 
-    abstract void loadingCargo(int cargo); // Ved at lave denne abstract metode sikrer vi, at alle subclasses af Vessel
-                                           // anvender denne
+    abstract void loadingCargo(int cargo); // Ved at lave denne abstract metode sikrer vi, at alle subclasses
+                                           // af Vessel
+    // anvender denne
 
     abstract void utilitylevelofCapacity();
 
@@ -97,23 +98,26 @@ class Tankers extends Vessel {
 }
 
 class RoRo extends Vessel {
-    double carLength = 8;
-    double truckLength = 30;
+    double carLength;
+    double truckLength;
 
     public RoRo(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
 
     }
 
-    public void loadingCargo(int vehicles) {
-        this.carLength = vehicles;
-        System.out.println("Carlength on ship: " + (carLength * 3) + ". Trucklength on ship: " + truckLength * 3
-                + ". Total amout of cargo length: " + (carLength * 3 + truckLength * 3 + "."));
+    public void loadingCargo(int vehicles, int trucks) {
+        this.carLength = vehicles * 8;
+        this.truckLength = trucks * 30;
+
+        System.out.println("Carlength on ship: " + this.carLength + ". Trucklength on ship: "
+                + this.truckLength
+                + ". Total amout of cargo length: " + (this.carLength + this.truckLength) + ".");
     }
 
     public void utilitylevelofCapacity() {
-        System.out.println("Total ship length: " + length + ". Fraction of cargo space left: "
-                + (carLength * 3 + truckLength * 3 / length) + "%");
-                System.out.println();
+        System.out.println("Total ship length: " + cargo + ". Fraction of cargo space left: "
+                + (this.carLength + this.truckLength / cargo) + "%");
+        System.out.println();
     }
 }
