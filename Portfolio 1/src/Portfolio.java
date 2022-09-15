@@ -21,19 +21,19 @@ abstract class Vessel {
     int draft;
     int length;
     int width;
-    int maxCap;
+    int cargo;
 
-    public Vessel(String flagNation, String vesselType, int draft, int length, int width, int maxCap) {
+    public Vessel(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         this.flagNation = flagNation;
         this.vesselType = vesselType;
         this.draft = draft;
         this.length = length;
         this.width = width;
-        this.maxCap = maxCap;
+        this.cargo = cargo;
 
     }
 
-    abstract void loadingCargo(int maxCap); // Ved at lave denne abstract metode sikrer vi, at alle subclasses af Vessel
+    abstract void loadingCargo(int cargo); // Ved at lave denne abstract metode sikrer vi, at alle subclasses af Vessel
                                             // anvender denne
 
     abstract void utilitylevelofCapacity();
@@ -43,16 +43,16 @@ abstract class Vessel {
 class Container extends Vessel {
     int containerAmount;
 
-    public Container(String flagNation, String vesselType, int draft, int length, int width, int maxCap) {
-        super(flagNation, vesselType, draft, length, width, maxCap);
+    public Container(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
+        super(flagNation, vesselType, draft, length, width, cargo);
 
     }
 
     public void loadingCargo(int containers) {
-        if (containers > this.maxCap) {
-            System.out.println("The maximum amount of countainers is " + this.maxCap
-                    + "Vessel is therefore only loaded with this amount of containers" + this.maxCap);
-            containerAmount = this.maxCap;
+        if (containers > this.cargo) {
+            System.out.println("The maximum amount of countainers is " + this.cargo
+                    + "Vessel is therefore only loaded with this amount of containers" + this.cargo);
+            containerAmount = this.cargo;
         } else if (containers <= 0) {
             System.out.println("Cannot load " + containers + "Please load an approiate load");
         } else {
@@ -62,7 +62,7 @@ class Container extends Vessel {
     }
 
     public void utilitylevelofCapacity() {
-        System.out.println("The container vessel is filled with " + this.containerAmount + "/" + maxCap);
+        System.out.println("The container vessel is filled with " + this.containerAmount + "/" + cargo);
     }
 
 }
@@ -70,16 +70,16 @@ class Container extends Vessel {
 class Tankers extends Vessel {
     int compartmentsAmount;
 
-    public Tankers(String flagNation, String vesselType, int draft, int length, int width, int maxCap) {
-        super(flagNation, vesselType, draft, length, width, maxCap);
+    public Tankers(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
+        super(flagNation, vesselType, draft, length, width, cargo);
 
     }
 
     public void loadingCargo(int compartments) {
-        if (compartments > this.maxCap) {
-            System.out.println("The maximum amount of compartments is " + this.maxCap
-                    + "Vessel is therefore only loaded with this amount of compartments" + this.maxCap);
-            compartmentsAmount = this.maxCap;
+        if (compartments > this.cargo) {
+            System.out.println("The maximum amount of compartments is " + this.cargo
+                    + "Vessel is therefore only loaded with this amount of compartments" + this.cargo);
+            compartmentsAmount = this.cargo;
         } else if (compartments <= 0) {
             System.out.println("Cannot load " + compartmentsAmount + "Please load an approiate load");
         } else {
@@ -88,7 +88,7 @@ class Tankers extends Vessel {
     }
 
     public void utilitylevelofCapacity() {
-        System.out.println("The container vessel is filled with " + this.compartmentsAmount + "/" + maxCap);
+        System.out.println("The container vessel is filled with " + this.compartmentsAmount + "/" + cargo);
     }
 
 }
@@ -97,8 +97,8 @@ class RoRo extends Vessel {
     double carLength = 8;
     double truckLength = 30;
 
-    public RoRo(String flagNation, String vesselType, int draft, int length, int width, int maxCap) {
-        super(flagNation, vesselType, draft, length, width, maxCap);
+    public RoRo(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
+        super(flagNation, vesselType, draft, length, width, cargo);
 
     }
 
