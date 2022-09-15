@@ -11,7 +11,9 @@ public class Portfolio {
         roRoVessel.loadingCargo(7, 1);
         roRoVessel.utilitylevelofCapacity();
 
+       
     }
+    
 
 }
 
@@ -33,16 +35,22 @@ abstract class Vessel {
 
     }
 
-    abstract void loadingCargo(int cargo); // Ved at lave denne abstract metode sikrer vi, at alle subclasses
+   // abstract void loadingCargo(int cargo, int vehicles ); // Ved at lave denne abstract metode sikrer vi, at alle subclasses
                                            // af Vessel
+        //Har udkommenteret loading cargo, som abstract metode. Subclass kan ikke arve abstract metode fra superclass, hvis der er forskellige parametre
     // anvender denne
 
     abstract void utilitylevelofCapacity();
-
+    abstract boolean checkCargo();
 }
 
 class Container extends Vessel {
     double containerAmount;
+   
+
+    public boolean checkCargo(){
+        return containerAmount >= cargo;
+    }
 
     public Container(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
@@ -71,6 +79,10 @@ class Container extends Vessel {
 
 class Tankers extends Vessel {
     double compartmentsAmount;
+
+    public boolean checkCargo(){
+        return compartmentsAmount >= cargo;
+    }
 
     public Tankers(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
