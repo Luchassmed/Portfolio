@@ -21,7 +21,7 @@ abstract class Vessel {
     int draft;
     int length;
     int width;
-    int cargo;
+    double cargo;
 
     public Vessel(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         this.flagNation = flagNation;
@@ -34,14 +34,14 @@ abstract class Vessel {
     }
 
     abstract void loadingCargo(int cargo); // Ved at lave denne abstract metode sikrer vi, at alle subclasses af Vessel
-                                            // anvender denne
+                                           // anvender denne
 
     abstract void utilitylevelofCapacity();
 
 }
 
 class Container extends Vessel {
-    int containerAmount;
+    double containerAmount;
 
     public Container(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
@@ -62,13 +62,14 @@ class Container extends Vessel {
     }
 
     public void utilitylevelofCapacity() {
-        System.out.println("The container vessel is filled with " + this.containerAmount + "/" + cargo);
+        System.out.println("The container vessel is filled with " + (this.containerAmount / cargo) * 100 + "%");
+        System.out.println();
     }
 
 }
 
 class Tankers extends Vessel {
-    int compartmentsAmount;
+    double compartmentsAmount;
 
     public Tankers(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
@@ -81,14 +82,16 @@ class Tankers extends Vessel {
                     + "Vessel is therefore only loaded with this amount of compartments" + this.cargo);
             compartmentsAmount = this.cargo;
         } else if (compartments <= 0) {
-            System.out.println("Cannot load " + compartmentsAmount + "Please load an approiate load");
+            System.out.println("Cannot load " + compartmentsAmount + "Please load an approiate amount");
         } else {
             this.compartmentsAmount = compartments;
         }
     }
 
     public void utilitylevelofCapacity() {
-        System.out.println("The container vessel is filled with " + this.compartmentsAmount + "/" + cargo);
+        System.out.println();
+        System.out.println("The Tankers vessel is filled with " + (this.compartmentsAmount / cargo) * 100 + "%");
+        System.out.println();
     }
 
 }
@@ -111,5 +114,6 @@ class RoRo extends Vessel {
     public void utilitylevelofCapacity() {
         System.out.println("Total ship length: " + length + ". Fraction of cargo space left: "
                 + (carLength * 3 + truckLength * 3 / length) + "%");
+                System.out.println();
     }
 }
