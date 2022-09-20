@@ -57,9 +57,17 @@ class Container extends Vessel {
 
     }
 
-    public void loadingCargo(int containers) {
-
-            this.containerAmount = containers;
+    public boolean loadingCargo(int containers) {
+            if (containers > this.cargo){
+                return containers > cargo;
+            } 
+             if (containers < this.cargo) 
+            { 
+                containerAmount = containers;
+                return containers < cargo;
+            }
+            
+            
         }
 
     
@@ -68,6 +76,7 @@ class Container extends Vessel {
         System.out.println("The container vessel is filled with " + (this.containerAmount / cargo) * 100 + "%");
         System.out.println();
     }
+    
 
 }
 
