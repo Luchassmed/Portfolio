@@ -41,15 +41,21 @@ abstract class Vessel {
     // anvender denne
 
     abstract void utilitylevelofCapacity();
-
     abstract boolean checkCargo();
+    abstract boolean checkFraction();
+    
 }
 
 class Container extends Vessel {
     double containerAmount;
+    double fraction;
 
     public boolean checkCargo() { // Hvis antallet af containers er større end max, returner true
         return containerAmount > cargo;
+    }
+
+    public boolean checkFraction() { 
+        return fraction < 100.0;
     }
 
     public Container(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
@@ -62,8 +68,7 @@ class Container extends Vessel {
     }
 
     public void utilitylevelofCapacity() {
-        System.out.println("The container vessel is filled with " + (this.containerAmount / cargo) * 100 + "%");
-        System.out.println();
+        this.fraction = (this.containerAmount / cargo) * 100;
     }
 
 }
@@ -75,21 +80,17 @@ class Tankers extends Vessel {
         return compartmentsAmount > cargo;
     }
 
+    public boolean checkFraction() { 
+        return fraction < 100.0;
+    }
+
     public Tankers(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
         super(flagNation, vesselType, draft, length, width, cargo);
 
     }
 
     public void loadingCargo(int compartments) {
-
         compartmentsAmount = compartments;
-        if (compartmentsAmount < cargo) {
-            System.out.println("Not enough cargospace!");
-        }
-        if (compartmentsAmount > cargo) {
-            System.out.println("Enough cargospace!");
-        }
-
     }
 
     public void utilitylevelofCapacity() {

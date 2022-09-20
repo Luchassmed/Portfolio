@@ -14,7 +14,8 @@ public class unitTest {
     void containerTest(){
         Container containerVessel = new Container("Somalia", "Container", 1, 5, 2, 25);
         containerVessel.loadingCargo(21);
-        assertEquals(containerVessel.checkCargo(), false); //Hvis antallet af containers er mindre end max, så er værdien false. Hvis den er false, så er der ikke for mange containers
+        assertEquals(containerVessel.checkCargo(), false);
+        assertEquals(containerVessel.checkFraction(), true); //Hvis antallet af containers er mindre end max, så er værdien false. Hvis den er false, så er der ikke for mange containers
     }
 
     @Test
