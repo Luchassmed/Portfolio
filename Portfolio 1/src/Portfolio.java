@@ -4,16 +4,14 @@ public class Portfolio {
         Container containerVessel = new Container("Somalia", "Container", 1, 5, 2, 25);
         RoRo roRoVessel = new RoRo("Finland", "RoRo", 50, 150, 60, 150);
 
-        tankersVessel.loadingCargo(5);
+        tankersVessel.loadingCargo(15);
         tankersVessel.utilitylevelofCapacity();
-        containerVessel.loadingCargo(23);
+        containerVessel.loadingCargo(3);
         containerVessel.utilitylevelofCapacity();
         roRoVessel.loadingCargo(7, 1);
         roRoVessel.utilitylevelofCapacity();
 
-       
     }
-    
 
 }
 
@@ -35,20 +33,22 @@ abstract class Vessel {
 
     }
 
-   // abstract void loadingCargo(int cargo, int vehicles ); // Ved at lave denne abstract metode sikrer vi, at alle subclasses
-                                           // af Vessel
-        //Har udkommenteret loading cargo, som abstract metode. Subclass kan ikke arve abstract metode fra superclass, hvis der er forskellige parametre
+    // abstract void loadingCargo(int cargo, int vehicles ); // Ved at lave denne
+    // abstract metode sikrer vi, at alle subclasses
+    // af Vessel
+    // Har udkommenteret loading cargo, som abstract metode. Subclass kan ikke arve
+    // abstract metode fra superclass, hvis der er forskellige parametre
     // anvender denne
 
     abstract void utilitylevelofCapacity();
+
     abstract boolean checkCargo();
 }
 
 class Container extends Vessel {
     double containerAmount;
-   
 
-    public boolean checkCargo(){ //Hvis antallet af containers er større end max, returner true
+    public boolean checkCargo() { // Hvis antallet af containers er større end max, returner true
         return containerAmount > cargo;
     }
 
@@ -57,31 +57,21 @@ class Container extends Vessel {
 
     }
 
-    public boolean loadingCargo(int containers) {
-            if (containers > cargo){
-                return containerAmount > cargo;
-            } else {
-            containerAmount = containers;
-            return false;
-            
-
-        }
+    public void loadingCargo(int containers) {
+        this.containerAmount = containers;
     }
-
-    
 
     public void utilitylevelofCapacity() {
         System.out.println("The container vessel is filled with " + (this.containerAmount / cargo) * 100 + "%");
         System.out.println();
     }
-    
 
 }
 
 class Tankers extends Vessel {
     double compartmentsAmount;
 
-    public boolean checkCargo(){
+    public boolean checkCargo() {
         return compartmentsAmount > cargo;
     }
 
@@ -91,10 +81,16 @@ class Tankers extends Vessel {
     }
 
     public void loadingCargo(int compartments) {
-      
-            this.compartmentsAmount = compartments;
+
+        compartmentsAmount = compartments;
+        if(compartmentsAmount < cargo){
+            System.out.println("Not enough cargospace!");
         }
-    
+        if(compartmentsAmount > cargo){
+            System.out.println("Enough cargospace!");
+        }
+        
+    }
 
     public void utilitylevelofCapacity() {
         System.out.println();
@@ -108,8 +104,8 @@ class RoRo extends Vessel {
     double carLength;
     double truckLength;
 
-    public boolean checkCargo(){
-        return carLength+truckLength > cargo;
+    public boolean checkCargo() {
+        return carLength + truckLength > cargo;
     }
 
     public RoRo(String flagNation, String vesselType, int draft, int length, int width, int cargo) {
