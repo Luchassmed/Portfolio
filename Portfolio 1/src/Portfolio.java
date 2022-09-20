@@ -58,17 +58,15 @@ class Container extends Vessel {
     }
 
     public boolean loadingCargo(int containers) {
-            if (containers > this.cargo){
-                return containers > cargo;
-            } 
-             if (containers < this.cargo) 
-            { 
-                containerAmount = containers;
-                return containers < cargo;
-            }
+            if (containers > cargo){
+                return containerAmount > cargo;
+            } else {
+            containerAmount = containers;
+            return false;
             
-            
+
         }
+    }
 
     
 
