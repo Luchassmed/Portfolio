@@ -1,14 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// import org.junit.Before;
-// import org.junit.jupiter.api.BeforeEach;
-
 //Dette er klassen vi bruger til unit test, af loadingCargo metoderne.
 public class unitTest {
-
-
-  
 
     @Test
     void containerTest(){
@@ -23,6 +17,7 @@ public class unitTest {
         Tankers tankersVessel = new Tankers("Norge", "Tanker", 25, 100, 40, 10);
         tankersVessel.loadingCargo(7);
         assertEquals(tankersVessel.checkCargo(), false);
+        assertEquals(tankersVessel.checkFraction(), true);
     }
 
     @Test
@@ -30,5 +25,6 @@ public class unitTest {
         RoRo roRoVessel = new RoRo("Finland", "RoRo", 50, 150, 60, 150);
         roRoVessel.loadingCargo(7, 1);
         assertEquals(roRoVessel.checkCargo(), false);
+        assertEquals(roRoVessel.checkFraction(), true);
     }
 }
