@@ -58,17 +58,11 @@ class Container extends Vessel {
     }
 
     public void loadingCargo(int containers) {
-        if (containers > this.cargo) {
-            System.out.println("The maximum amount of countainers is " + this.cargo
-                    + "Vessel is therefore only loaded with this amount of containers" + this.cargo);
-            containerAmount = this.cargo;
-        } else if (containers <= 0) {
-            System.out.println("Cannot load " + containers + "Please load an approiate load");
-        } else {
+
             this.containerAmount = containers;
         }
 
-    }
+    
 
     public void utilitylevelofCapacity() {
         System.out.println("The container vessel is filled with " + (this.containerAmount / cargo) * 100 + "%");
@@ -90,16 +84,10 @@ class Tankers extends Vessel {
     }
 
     public void loadingCargo(int compartments) {
-        if (compartments > this.cargo) {
-            System.out.println("The maximum amount of compartments is " + this.cargo
-                    + "Vessel is therefore only loaded with this amount of compartments" + this.cargo);
-            compartmentsAmount = this.cargo;
-        } else if (compartments <= 0) {
-            System.out.println("Cannot load " + compartmentsAmount + "Please load an approiate amount");
-        } else {
+      
             this.compartmentsAmount = compartments;
         }
-    }
+    
 
     public void utilitylevelofCapacity() {
         System.out.println();
