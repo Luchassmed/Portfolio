@@ -20,7 +20,7 @@ public class unitTest {
     @Test
     void tankersTest(){
         Tankers tankersVessel = new Tankers("Norge", "Tanker", 25, 100, 40, 10);
-        tankersVessel.loadingCargo(5);
+        tankersVessel.loadingCargo(7);
         assertEquals(tankersVessel.checkCargo(), false);
     }
 

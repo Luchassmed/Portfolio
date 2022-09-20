@@ -83,13 +83,13 @@ class Tankers extends Vessel {
     public void loadingCargo(int compartments) {
 
         compartmentsAmount = compartments;
-        if(compartmentsAmount < cargo){
+        if (compartmentsAmount < cargo) {
             System.out.println("Not enough cargospace!");
         }
-        if(compartmentsAmount > cargo){
+        if (compartmentsAmount > cargo) {
             System.out.println("Enough cargospace!");
         }
-        
+
     }
 
     public void utilitylevelofCapacity() {
