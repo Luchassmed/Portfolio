@@ -5,26 +5,44 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class unitTest {
 
     @Test
-    void containerTest(){
-        Container containerVessel = new Container("Somalia", "Container", 1, 5, 2, 25);
-        containerVessel.loadingCargo(21);
+    void containerCheckCargo() {
+        Container containerVessel = new Container("Somalia", 1, 5, 2, 25);
+        containerVessel.loadingCargo(24);
         assertEquals(containerVessel.checkCargo(), false);
-        assertEquals(containerVessel.checkFraction(), true); //Hvis antallet af containers er mindre end max, så er værdien false. Hvis den er false, så er der ikke for mange containers
+    }
+
+   @Test
+   void containerCheckFraction(){
+        Container containerVessel = new Container("Somalia", 1, 5, 2, 25);
+        containerVessel.loadingCargo(24);
+        assertEquals(containerVessel.checkFraction(), true);
+   }
+
+    @Test
+    void tankersTest() {
+        Tankers tankersVessel = new Tankers("Norge", 25, 100, 40, 10);
+        tankersVessel.loadingCargo(5);
+        assertEquals(tankersVessel.checkCargo(), false);
     }
 
     @Test
-    void tankersTest(){
-        Tankers tankersVessel = new Tankers("Norge", "Tanker", 25, 100, 40, 10);
+    void tankersCheckFraction() {
+        Tankers tankersVessel = new Tankers("Norge", 25, 100, 40, 10);
         tankersVessel.loadingCargo(7);
-        assertEquals(tankersVessel.checkCargo(), false);
         assertEquals(tankersVessel.checkFraction(), true);
     }
 
     @Test
-    void roRoTest(){
-        RoRo roRoVessel = new RoRo("Finland", "RoRo", 50, 150, 60, 150);
+    void roRoTest() {
+        RoRo roRoVessel = new RoRo("Finland", 50, 150, 60, 150);
         roRoVessel.loadingCargo(7, 1);
         assertEquals(roRoVessel.checkCargo(), false);
+    }
+
+    @Test
+    void roRoCheckFraction() {
+        RoRo roRoVessel = new RoRo("Finland", 50, 150, 60, 150);
+        roRoVessel.loadingCargo(7, 1);
         assertEquals(roRoVessel.checkFraction(), true);
     }
 }
