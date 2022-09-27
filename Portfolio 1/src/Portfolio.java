@@ -146,19 +146,40 @@ class RoRo extends Vessel {
 
 // <----- Dummy classes ----->
 class shippingDepartment {
-    double vesselPosX;
-    double vesselPosY;
-    String futurePort;
 
-    public void currentVesselPos (double longitude, double latitude) {
-        this.vesselPosX = longitude;
-        this.vesselPosY = latitude;
+    public void currentVesselPos() { // Calculates the position of vessels in the sea.
     }
 
-    public void futureDestination (String port) {
-        this.futurePort = port;
+    public static void testVesselPosNull () { // Unit test that checks if the vessel has a position.
+    }
+
+    public void testVesselPosBelow () { // Unit test that checks if the vessel has a position below zero.
+    }
+
+    public void futureDestination() { // Tells the shipping department the future destination of the vessels.
+    }
+
+    public void testDesination () { // Unit test that checks if the vessel has arrived at the planned location.
+
     }
 
 }
 
+class freightDepartment {
 
+    public void searchNearestShip() {
+        // Locate the nearest ship.
+    }
+
+    public void testCatchShip() { // Unit test that checks if the vessel it finds, is the closest vessel.
+    }
+
+    public void changeDestination() {
+        // Changes destination of ship.
+    }
+
+    public void testChange () { // Unit test that checks if the vessels destination has been changed.
+    }
+
+
+}

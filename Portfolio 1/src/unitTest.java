@@ -65,4 +65,14 @@ public class unitTest {
         roRoVessel.loadingCargo(7, 1);
         assertEquals(roRoVessel.belowBoundary(), false);
     }
+
+    @Test 
+    void testVesselPosNull() { // Unit test that checks if the vessel has a position.
+        
+        assertEquals(shippingDepartment.testVesselPosNull(), false);
+    }
+
+    @Test
+     void testVesselPosBelow () { // Unit test that checks if the vessel has a position below zero.
+    }
 }
