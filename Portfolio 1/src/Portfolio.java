@@ -31,11 +31,13 @@ abstract class Vessel {
 
     }
 
-    abstract double utilitylevelofCapacity();
-
     abstract boolean checkCargo();
 
+    abstract double utilitylevelofCapacity();
+
     abstract boolean checkFraction();
+
+    abstract boolean belowBoundary();
 
 }
 
@@ -57,6 +59,10 @@ class Container extends Vessel {
     public boolean checkFraction() {
         return utilitylevelofCapacity() < 100.0;
     }
+
+    public boolean belowBoundary() {
+        return utilitylevelofCapacity() < 0;
+    } 
 
     public Container(String flagNation,   int draft, int length, int width, int cargo) {
         super(flagNation,   draft, length, width, cargo);
@@ -82,6 +88,10 @@ class Tankers extends Vessel {
     public boolean checkFraction() {
         return utilitylevelofCapacity() < 100.0;
     }
+
+    public boolean belowBoundary() {
+        return utilitylevelofCapacity() < 0;
+    } 
 
     public Tankers(String flagNation,  int draft, int length, int width, int cargo) {
         super(flagNation, draft, length, width, cargo);
@@ -113,6 +123,10 @@ class RoRo extends Vessel {
     public boolean checkFraction() {
         return utilitylevelofCapacity() < 100.0;
     }
+
+    public boolean belowBoundary() {
+        return utilitylevelofCapacity() < 0;
+    } 
 
     public RoRo(String flagNation,   int draft, int length, int width, int cargo) {
         super(flagNation, draft, length, width, cargo);

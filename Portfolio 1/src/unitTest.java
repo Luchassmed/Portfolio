@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//Dette er klassen vi bruger til unit test, af loadingCargo metoderne.
 public class unitTest {
 
     @Test
@@ -14,8 +13,15 @@ public class unitTest {
    @Test
    void containerCheckFraction(){
         Container containerVessel = new Container("Somalia", 1, 5, 2, 25);
-        containerVessel.loadingCargo(24);
+        containerVessel.loadingCargo(9);
         assertEquals(containerVessel.checkFraction(), true);
+   }
+
+   @Test
+   void containerBelowBoundary(){
+        Container containerVessel = new Container("Somalia", 1, 5, 2, 25);
+        containerVessel.loadingCargo(-10);
+        assertEquals(containerVessel.belowBoundary(), true);
    }
 
     @Test
@@ -33,6 +39,13 @@ public class unitTest {
     }
 
     @Test
+   void tankersBelowBoundary(){
+        Tankers tankersVessel = new Tankers("Finland", 25, 100, 40, 10);
+        tankersVessel.loadingCargo(10);
+        assertEquals(tankersVessel.belowBoundary(), false);
+   }
+
+    @Test
     void roRoTest() {
         RoRo roRoVessel = new RoRo("Finland", 50, 150, 60, 150);
         roRoVessel.loadingCargo(7, 1);
@@ -44,5 +57,12 @@ public class unitTest {
         RoRo roRoVessel = new RoRo("Finland", 50, 150, 60, 150);
         roRoVessel.loadingCargo(7, 1);
         assertEquals(roRoVessel.checkFraction(), true);
+    }
+
+    @Test
+    void roRoBelowBoundary() {
+        RoRo roRoVessel = new RoRo("Finland", 50, 150, 60, 150);
+        roRoVessel.loadingCargo(7, 1);
+        assertEquals(roRoVessel.belowBoundary(), false);
     }
 }
