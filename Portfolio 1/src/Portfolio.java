@@ -62,10 +62,10 @@ class Container extends Vessel {
 
     public boolean belowBoundary() {
         return utilitylevelofCapacity() < 0;
-    } 
+    }
 
-    public Container(String flagNation,   int draft, int length, int width, int cargo) {
-        super(flagNation,   draft, length, width, cargo);
+    public Container(String flagNation, int draft, int length, int width, int cargo) {
+        super(flagNation, draft, length, width, cargo);
 
     }
 
@@ -91,9 +91,9 @@ class Tankers extends Vessel {
 
     public boolean belowBoundary() {
         return utilitylevelofCapacity() < 0;
-    } 
+    }
 
-    public Tankers(String flagNation,  int draft, int length, int width, int cargo) {
+    public Tankers(String flagNation, int draft, int length, int width, int cargo) {
         super(flagNation, draft, length, width, cargo);
 
     }
@@ -126,9 +126,9 @@ class RoRo extends Vessel {
 
     public boolean belowBoundary() {
         return utilitylevelofCapacity() < 0;
-    } 
+    }
 
-    public RoRo(String flagNation,   int draft, int length, int width, int cargo) {
+    public RoRo(String flagNation, int draft, int length, int width, int cargo) {
         super(flagNation, draft, length, width, cargo);
 
     }
@@ -143,3 +143,22 @@ class RoRo extends Vessel {
         return fraction;
     }
 }
+
+// <----- Dummy classes ----->
+class shippingDepartment {
+    double vesselPosX;
+    double vesselPosY;
+    String futurePort;
+
+    public void currentVesselPos (double longitude, double latitude) {
+        this.vesselPosX = longitude;
+        this.vesselPosY = latitude;
+    }
+
+    public void futureDestination (String port) {
+        this.futurePort = port;
+    }
+
+}
+
+
