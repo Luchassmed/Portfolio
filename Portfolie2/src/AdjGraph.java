@@ -100,6 +100,7 @@ public class AdjGraph {
                 System.out.println("(MINUS) Tilføjede: " + currentvortex.getTEUtotal());
             }
         }
+
         while (TEUminus.size() > 0 && TEUplus.size() > 0) {
 
             if (TEUminus.get(TEUminus.size() - 1).getTEUtotal() == 0) {
@@ -115,19 +116,20 @@ public class AdjGraph {
             int tempP = TEUplus.get(TEUplus.size() - 1).getTEUtotal();
             int tempDif = Math.min(tempM, tempP);
 
-            // System.out.println("minus: " + tempM);
-            // System.out.println("plus: " + tempP);
-            // System.out.println("dif: " + tempDif);
-
             System.out.println(
-                    "Overfør fra " + TEUplus.get(0).getName() + " til " +
-                            TEUminus.get(0).getName() + ": " + tempDif);
+                    "Overfører fra " + TEUplus.get(TEUplus.size() - 1).getName() + " til " +
+                            TEUminus.get(TEUminus.size() - 1).getName() + ": " + tempDif);
 
-            int test1 = TEUminus.get(TEUminus.size() - 1).getTEUtotal() + tempDif;
-            TEUminus.get(TEUminus.size() - 1).setTEUtotal(test1);
+            int updMinus = TEUminus.get(TEUminus.size() - 1).getTEUtotal() + tempDif;
+            TEUminus.get(TEUminus.size() - 1).setTEUtotal(updMinus);
 
-            int test = TEUplus.get(TEUplus.size() - 1).getTEUtotal() - tempDif;
-            TEUplus.get(TEUplus.size() - 1).setTEUtotal(test);
+            int updPlus = TEUplus.get(TEUplus.size() - 1).getTEUtotal() - tempDif;
+            TEUplus.get(TEUplus.size() - 1).setTEUtotal(updPlus);
+
+        }
+        for (int i = 0; i < vertices.size(); i++) {
+            currentvortex = vertices.get(i);
+            System.out.println("Updated TEU " + currentvortex.getName() + ": " + currentvortex.getTEUtotal());
 
         }
     }
@@ -165,7 +167,7 @@ class Vertex implements Comparable<Vertex> { // Comparables bruges så vi kan so
     }
 
     public void setTEUtotal(Integer teu) {
-        TEUtotal += teu;
+        TEUtotal = teu;
     }
 
     public String getName() {
