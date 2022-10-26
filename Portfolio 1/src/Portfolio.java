@@ -143,22 +143,3 @@ class RoRo extends Vessel {
         return fraction;
     }
 }
-
-// <----- Dummy classes ----->
-class shippingDepartment {
-    double vesselPosX;
-    double vesselPosY;
-    String futurePort;
-
-    public void currentVesselPos (double longitude, double latitude) {
-        this.vesselPosX = longitude;
-        this.vesselPosY = latitude;
-    }
-
-    public void futureDestination (String port) {
-        this.futurePort = port;
-    }
-
-}
-
-
